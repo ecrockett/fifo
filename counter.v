@@ -1,0 +1,20 @@
+
+`timescale 1 ns / 100 ps
+module counter(out, enable, reset, clock);
+  output [7:0] 	out;
+  input 	clock, reset, enable;
+
+  reg [7:0] 	out;
+
+
+ always @ (posedge clock or posedge reset)
+  if(reset)
+    out <= 8'h00;
+  else if(enable)
+    if(out == 8'h60) //when out = 96
+    	out <= 8'h00;
+    else  out <= out+1;
+	 
+
+
+endmodule
